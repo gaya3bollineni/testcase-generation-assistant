@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from src.generator import generate_test_cases
+from src.generator import generate_test_cases,format_test_case
 
 workflow: Dict[str, Any] = {
     "actors": [
@@ -32,4 +32,5 @@ test_cases = generate_test_cases(workflow)
 
 print("=== GENERATED TEST CASE CANDIDATES ===")
 for tc in test_cases:
-    print(tc)
+    print(format_test_case)
+    print("\n" + "=" * 50 + "\n")

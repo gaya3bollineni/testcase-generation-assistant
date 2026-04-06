@@ -110,3 +110,40 @@ def _validate_candidate_schema(candidate: Dict[str, Any]) -> None:
 
     if candidate["risk_level"] not in ["Low", "Medium", "High"]:
         raise ValueError("Invalid risk_level value")
+
+
+
+def format_test_case(candidate: Dict[str, Any]) -> str:
+    """
+    Formats a test-case candidate into a human-readable string.
+    """
+    lines = [
+        f"TEST CASE: {candidate['id']}",
+        f"Description: {candidate['description']}",
+        "",
+        "Preconditions:"
+    ]
+
+    for p in candidate["preconditions"]:
+        lines.append(f"- {p}")
+
+    lines.append("\nSteps:")
+    for i, step in enumerate(candidate["steps"], start=1):
+        lines.append(f"{i}. {step}")
+
+    lines.extend([
+        "",
+        "Expected Outcome:",
+        candidate["expected_outcome"],
+        "",
+        "Risk Level:",
+        candidate["risk_level"],
+        "",
+        "Why This Test Exists:",
+        candidate["rationale"]
+    ])
+
+    return "\n".join(lines)       
+
+    
+     
