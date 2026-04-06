@@ -1,0 +1,20 @@
+Actors:
+- Customer
+- Claims Processor
+
+Preconditions:
+- Policy is active
+- Claim is submitted
+
+Workflow:
+1. Customer submits claim
+2. System validates claim amount
+3. Claim is approved or rejected
+4. Payment is issued
+
+Business Rules:
+- Claims above threshold require manual review
+- Duplicate claims must be flagged
+
+Constraints:
+- Regulatory audit logging required
