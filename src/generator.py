@@ -66,11 +66,60 @@ def _validate_workflow(workflow: Dict[str, Any]) -> None:
 
 
 def _call_ai_for_test_generation(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """
+ 
+"""
     Calls an AI model to propose test case candidates.
-
-    This function is intentionally isolated to allow model replacement
-    and strict output validation.
     """
-    raise NotImplementedError("AI integration not enabled yet")
+
+    # PSEUDO-CODE PLACEHOLDER
+    ai_response = [
+        {
+            "id": "TC-CLAIMS-002",
+            "description": "Duplicate claim submission is flagged",
+            "preconditions": [
+                "Policy is active",
+                "An identical claim was previously submitted"
+            ],
+            "steps": [
+                "Customer submits duplicate claim",
+                "System detects matching claim data"
+            ],
+            "expected_outcome": "Claim is flagged and not processed automatically",
+            "risk_level": "Medium",
+            "rationale": "Duplicate claims present fraud risk and require investigation"
+        }
+    ]
+
+    validated = []
+    for candidate in ai_response:
+        _validate_candidate_schema(candidate)
+        validated.append(candidate)
+
+    return validated
+
+
+
+def _validate_candidate_schema(candidate: Dict[str, Any]) -> None:
+    """
+    Ensures that a generated test case candidate strictly conforms
+    to the defined output schema.
+    """
+    required_fields = [
+        "id",
+        "description",
+        "preconditions",
+        "steps",
+        "expected_outcome",
+        "risk_level",
+        "rationale"
+    ]
+
+    missing = [field for field in required_fields if field not in candidate]
+
+    if missing:
+        raise ValueError(f"Generated test case missing fields: {missing}")
+
+    if candidate["risk_level"] not in ["Low", "Medium", "High"]:
+        raise ValueError("Invalid risk_level value")
+
 
