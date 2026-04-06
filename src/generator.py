@@ -1,59 +1,66 @@
 
-om typing import List, Dict, Any
+from typing import List, Dict, Any
 
 
 def generate_test_cases(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     Generate candidate test cases from a structured workflow description.
 
-    This function is intentionally minimal. It defines the shape of the
-    generation flow without committing to prompt design, model selection,
-    or execution details.
+    This function intentionally produces test-case *candidates* that must
+    be reviewed and approved by a human.
     """
 
-    # Step 1: Validate input shape (lightweight, not strict)
     _validate_workflow(workflow)
 
-    # Step 2: Generate candidate test cases (AI-assisted)
     candidates = _generate_candidates(workflow)
 
-    # Step 3: Return structured, reviewable output
     return candidates
 
 
 def _generate_candidates(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
-    AI-assisted generation logic goes here.
+    Placeholder generation logic.
 
-    For now, this function is a placeholder that returns a hard-coded
-    example to validate the input/output contract.
+    This hard-coded output exists only to validate that the generator
+    conforms to the documented output schema.
     """
 
     return [
         {
-            "id": "TC-001",
-            "description": "Claim payout exceeds review threshold",
-            "preconditions": ["Policy is active"],
-            "steps": [
-                "Submit claim with amount above threshold",
-                "Trigger manual review process"
+            "test_id": "TC-CLAIMS-001",
+            "description": "Claim exceeding manual review threshold is not auto-approved",
+            "preconditions": [
+                "Policy is active",
+                "Claim amount exceeds manual review threshold"
             ],
-            "expected_outcome": "Claim is flagged for manual approval",
+            "steps": [
+                "Customer submits claim with amount above threshold",
+                "System routes claim to claims adjuster"
+            ],
+            "expected_outcome": "Claim is flagged for manual review and not automatically approved",
             "risk_level": "High",
-            "rationale": "High financial and regulatory impact if processed incorrectly"
+            "rationale": (
+                "Claims exceeding the threshold carry financial and regulatory risk "
+                "and must not be processed without human review."
+            )
         }
     ]
 
 
 def _validate_workflow(workflow: Dict[str, Any]) -> None:
     """
-    Minimal validation to ensure required keys exist.
-    This avoids silent failures while keeping flexibility.
+    Minimal validation to ensure required workflow sections exist.
     """
 
-    required_keys = ["actors", "preconditions", "workflow", "business_rules"]
+    required_keys = [
+        "actors",
+        "preconditions",
+        "workflow",
+        "business_rules",
+        "constraints"
+    ]
+
     missing = [key for key in required_keys if key not in workflow]
 
     if missing:
         raise ValueError(f"Missing required workflow fields: {missing}")
-
