@@ -1,4 +1,7 @@
+import json
 from typing import List, Dict, Any
+from pathlib import Path
+
 
 def explain_generation(workflow: Dict[str, Any]) -> None:
     """
@@ -144,3 +147,40 @@ def format_test_case(candidate: Dict[str, Any]) -> str:
     ])
 
     return "\n".join(lines)
+
+
+
+def save_test_cases_json(
+    test_cases: List[Dict[str, Any]],
+    output_path: str
+) -> None:
+    """
+    Saves generated test-case candidates to a JSON file.
+    """
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(test_cases, f, indent=2)
+
+    print(f"Saved test cases to {path}")
+
+
+
+def save_test_cases_markdown(
+    test_cases: List[Dict[str, Any]],
+    output_path: str
+) -> None:
+    """
+    Saves generated test-case candidates to a Markdown file
+    for easy human review.
+    """
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with path.open("w", encoding="utf-8") as f:
+        for tc in test_cases:
+            f.write(format_test_case(tc))
+            f.write("\n\n---\n\n")
+
+    print(f"Saved test cases to {path}")

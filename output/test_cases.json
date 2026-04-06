@@ -1,0 +1,17 @@
+[
+  {
+    "id": "TC-CLAIMS-002",
+    "description": "Duplicate claim submission is flagged",
+    "preconditions": [
+      "Policy is active",
+      "An identical claim was previously submitted"
+    ],
+    "steps": [
+      "Customer submits duplicate claim",
+      "System detects matching claim data"
+    ],
+    "expected_outcome": "Claim is flagged and not processed automatically",
+    "risk_level": "Medium",
+    "rationale": "Duplicate claims present fraud risk and require investigation"
+  }
+]
