@@ -25,26 +25,28 @@ def _generate_candidates(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     conforms to the documented output schema.
     """
 
-    return [
-        {
-            "test_id": "TC-CLAIMS-001",
-            "description": "Claim exceeding manual review threshold is not auto-approved",
-            "preconditions": [
-                "Policy is active",
-                "Claim amount exceeds manual review threshold"
-            ],
-            "steps": [
-                "Customer submits claim with amount above threshold",
-                "System routes claim to claims adjuster"
-            ],
-            "expected_outcome": "Claim is flagged for manual review and not automatically approved",
-            "risk_level": "High",
-            "rationale": (
-                "Claims exceeding the threshold carry financial and regulatory risk "
-                "and must not be processed without human review."
-            )
-        }
-    ]
+
+return [
+    {
+        "id": "TC-CLAIMS-001",
+        "description": "Claim exceeding manual review threshold is not auto-approved",
+        "preconditions": [
+            "Policy is active",
+            "Claim amount exceeds manual review threshold"
+        ],
+        "steps": [
+            "Customer submits claim with amount above threshold",
+            "System routes claim to claims adjuster"
+        ],
+        "expected_outcome": "Claim is flagged for manual review and not automatically approved",
+        "risk_level": "High",
+        "rationale": (
+            "Claims exceeding the threshold carry financial and regulatory risk "
+            "and must not be processed without human review."
+        )
+    }
+]
+
 
 
 def _validate_workflow(workflow: Dict[str, Any]) -> None:
