@@ -29,15 +29,15 @@ Out of scope:
 - Incremental adoption
 
   
-## Architecture Overview
-
-The system is intentionally simple and defensive in design. AI is used only as an assistive component and is fully bounded by strict input and output validation.
-
-
 ## Status
 
 Experimental. This repository is intentionally narrow in scope and intended as a reference and exploration rather than a production-ready tool.
 
+## Architecture Overview
+
+The system is intentionally simple and defensive in design. AI is used solely as an assistive component and is bounded by strict input and output validation.
+
+```text
 ┌────────────────────────┐
 │  Structured Workflow   │
 │  (Actors, Rules, Flow) │
@@ -67,3 +67,4 @@ Experimental. This repository is intentionally narrow in scope and intended as a
 │  • JSON (Structured)  │
 │  • Markdown (Readable)│
 └────────────────────────┘
+
