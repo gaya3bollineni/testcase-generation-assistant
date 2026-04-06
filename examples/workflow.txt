@@ -1,20 +1,29 @@
 Actors:
 - Customer
-- Claims Processor
+- Claims Processing System
+- Claims Adjuster
 
 Preconditions:
 - Policy is active
-- Claim is submitted
+- Customer is authenticated
+- Claim has not been previously submitted
 
-Workflow:
-1. Customer submits claim
-2. System validates claim amount
-3. Claim is approved or rejected
-4. Payment is issued
+Workflow Steps:
+1. Customer submits a claim with amount and supporting documents
+2. System validates claim against policy coverage
+3. System checks whether claim amount exceeds manual review threshold
+4. If threshold is exceeded, claim is routed to a claims adjuster
+5. Adjuster reviews claim and approves or rejects it
+6. System updates claim status and notifies customer
 
 Business Rules:
-- Claims above threshold require manual review
-- Duplicate claims must be flagged
+- Claims over the manual review threshold must not be auto-approved
+- Duplicate claims must be flagged for investigation
+- Claim payout must not exceed remaining policy coverage
+
 
 Constraints:
-- Regulatory audit logging required
+- Regulatory audit logging is required for all claim decisions
+- Claim processing must complete within defined SLA
+- Payout actions are irreversible once executed
+
