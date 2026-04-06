@@ -28,6 +28,42 @@ Out of scope:
 - Minimal assumptions about tooling and frameworks
 - Incremental adoption
 
+  
+## Architecture Overview
+
+The system is intentionally simple and defensive in design. AI is used only as an assistive component and is fully bounded by strict input and output validation.
+
+
 ## Status
 
 Experimental. This repository is intentionally narrow in scope and intended as a reference and exploration rather than a production-ready tool.
+
+┌────────────────────────┐
+│  Structured Workflow   │
+│  (Actors, Rules, Flow) │
+└───────────┬────────────┘
+            │
+            ▼
+┌────────────────────────┐
+│   Input Validation     │
+│  (Schema Enforcement)  │
+└───────────┬────────────┘
+            │
+            ▼
+┌────────────────────────┐
+│ AI-Assisted Generation │
+│ (Mocked / Pluggable)   │
+└───────────┬────────────┘
+            │
+            ▼
+┌────────────────────────┐
+│  Output Validation     │
+│ (Test Case Schema)     │
+└───────────┬────────────┘
+            │
+            ▼
+┌────────────────────────┐
+│   Reviewable Outputs   │
+│  • JSON (Structured)  │
+│  • Markdown (Readable)│
+└────────────────────────┘
