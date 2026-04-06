@@ -113,10 +113,8 @@ def _validate_candidate_schema(candidate: Dict[str, Any]) -> None:
 
 
 
+
 def format_test_case(candidate: Dict[str, Any]) -> str:
-    """
-    Formats a test-case candidate into a human-readable string.
-    """
     lines = [
         f"TEST CASE: {candidate['id']}",
         f"Description: {candidate['description']}",
@@ -127,7 +125,9 @@ def format_test_case(candidate: Dict[str, Any]) -> str:
     for p in candidate["preconditions"]:
         lines.append(f"- {p}")
 
-    lines.append("\nSteps:")
+    lines.append("")
+    lines.append("Steps:")
+
     for i, step in enumerate(candidate["steps"], start=1):
         lines.append(f"{i}. {step}")
 
@@ -143,7 +143,4 @@ def format_test_case(candidate: Dict[str, Any]) -> str:
         candidate["rationale"]
     ])
 
-    return "\n".join(lines)       
-
-    
-     
+    return "\n".join(lines)

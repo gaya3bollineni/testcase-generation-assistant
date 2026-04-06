@@ -32,5 +32,7 @@ test_cases = generate_test_cases(workflow)
 
 print("=== GENERATED TEST CASE CANDIDATES ===")
 for tc in test_cases:
-    print(format_test_case)
+    print(format_test_case(tc))
     print("\n" + "=" * 50 + "\n")
+
+
