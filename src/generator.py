@@ -1,17 +1,14 @@
-
 from typing import List, Dict, Any
 
 def explain_generation(workflow: Dict[str, Any]) -> None:
     """
-    Prints the prompt and expected output structure for review.
-    This is a dry-run mode with no AI call.
+    Dry-run mode: explains what would be sent to the AI
+    and what structure is expected back.
     """
-
-    prompt = _build_prompt(workflow)
-
-    print("=== AI PROMPT (DRY RUN) ===")
-    print(prompt)
-    print("\n=== EXPECTED OUTPUT STRUCTURE ===")
+    print("=== DRY RUN MODE ===")
+    print("Workflow received:")
+    print(workflow)
+    print("\nExpected output structure:")
     print({
         "id": "<string>",
         "description": "<string>",
@@ -30,69 +27,23 @@ def generate_test_cases(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     This function intentionally produces test-case *candidates* that must
     be reviewed and approved by a human.
     """
-
     _validate_workflow(workflow)
-
-    candidates = _generate_candidates(workflow)
-
-    return candidates
+    return _generate_candidates(workflow)
 
 
 def _generate_candidates(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
-   
-    # Placeholder logic will be replaced by AI once constraints are enforced
+    """
+    Delegates generation to the AI-backed function.
+    """
     return _call_ai_for_test_generation(workflow)
 
 
-return [
-    {
-        "id": "TC-CLAIMS-001",
-        "description": "Claim exceeding manual review threshold is not auto-approved",
-        "preconditions": [
-            "Policy is active",
-            "Claim amount exceeds manual review threshold"
-        ],
-        "steps": [
-            "Customer submits claim with amount above threshold",
-            "System routes claim to claims adjuster"
-        ],
-        "expected_outcome": "Claim is flagged for manual review and not automatically approved",
-        "risk_level": "High",
-        "rationale": (
-            "Claims exceeding the threshold carry financial and regulatory risk "
-            "and must not be processed without human review."
-        )
-    }
-]
-
-
-
-def _validate_workflow(workflow: Dict[str, Any]) -> None:
-    """
-    Minimal validation to ensure required workflow sections exist.
-    """
-
-    required_keys = [
-        "actors",
-        "preconditions",
-        "workflow",
-        "business_rules",
-        "constraints"
-    ]
-
-    missing = [key for key in required_keys if key not in workflow]
-
-    if missing:
-        raise ValueError(f"Missing required workflow fields: {missing}")
-
-
 def _call_ai_for_test_generation(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
- 
-"""
-    Calls an AI model to propose test case candidates.
+    """
+    Calls an AI model (currently mocked) to propose test case candidates.
     """
 
-    # PSEUDO-CODE PLACEHOLDER
+    # PSEUDO-AI OUTPUT (safe placeholder)
     ai_response = [
         {
             "id": "TC-CLAIMS-002",
@@ -119,6 +70,23 @@ def _call_ai_for_test_generation(workflow: Dict[str, Any]) -> List[Dict[str, Any
     return validated
 
 
+def _validate_workflow(workflow: Dict[str, Any]) -> None:
+    """
+    Minimal validation to ensure required workflow sections exist.
+    """
+    required_keys = [
+        "actors",
+        "preconditions",
+        "workflow",
+        "business_rules",
+        "constraints"
+    ]
+
+    missing = [key for key in required_keys if key not in workflow]
+
+    if missing:
+        raise ValueError(f"Missing required workflow fields: {missing}")
+
 
 def _validate_candidate_schema(candidate: Dict[str, Any]) -> None:
     """
@@ -142,5 +110,3 @@ def _validate_candidate_schema(candidate: Dict[str, Any]) -> None:
 
     if candidate["risk_level"] not in ["Low", "Medium", "High"]:
         raise ValueError("Invalid risk_level value")
-
-
