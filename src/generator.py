@@ -1,6 +1,27 @@
 
 from typing import List, Dict, Any
 
+def explain_generation(workflow: Dict[str, Any]) -> None:
+    """
+    Prints the prompt and expected output structure for review.
+    This is a dry-run mode with no AI call.
+    """
+
+    prompt = _build_prompt(workflow)
+
+    print("=== AI PROMPT (DRY RUN) ===")
+    print(prompt)
+    print("\n=== EXPECTED OUTPUT STRUCTURE ===")
+    print({
+        "id": "<string>",
+        "description": "<string>",
+        "preconditions": ["<string>"],
+        "steps": ["<string>"],
+        "expected_outcome": "<string>",
+        "risk_level": "Low | Medium | High",
+        "rationale": "<string>"
+    })
+
 
 def generate_test_cases(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
