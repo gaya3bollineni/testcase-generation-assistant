@@ -18,12 +18,9 @@ def generate_test_cases(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 def _generate_candidates(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """
-    Placeholder generation logic.
-
-    This hard-coded output exists only to validate that the generator
-    conforms to the documented output schema.
-    """
+   
+    # Placeholder logic will be replaced by AI once constraints are enforced
+    return _call_ai_for_test_generation(workflow)
 
 
 return [
@@ -66,3 +63,14 @@ def _validate_workflow(workflow: Dict[str, Any]) -> None:
 
     if missing:
         raise ValueError(f"Missing required workflow fields: {missing}")
+
+
+def _call_ai_for_test_generation(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Calls an AI model to propose test case candidates.
+
+    This function is intentionally isolated to allow model replacement
+    and strict output validation.
+    """
+    raise NotImplementedError("AI integration not enabled yet")
+
