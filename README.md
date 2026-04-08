@@ -71,3 +71,26 @@ The system is intentionally simple and defensive in design. AI is used solely as
 ## Example
 
 A complete example showing structured input and generated test‑case candidates is available under the `examples/` directory. This is intended to illustrate how the system is used and what kind of output it produces, not to define test completeness or execution behavior.
+
+## Design Rationale
+
+## Design Rationale
+
+This project is intentionally constrained. Rather than maximizing automation or AI capability, the design prioritizes clarity, reviewability, and human control.
+
+Key design choices include:
+
+- **Strict schemas before and after AI generation**  
+  Input and output validation ensure that AI contributes ideas without defining structure or semantics.
+
+- **Mocked AI integration**  
+  AI is treated as a replaceable assistant. Mocking allows the framework to be fully executable and reviewable without dependency on external services.
+
+- **No execution or prioritization logic**  
+  Test cases are generated as candidates only. Decisions such as ordering, selection, or execution are deliberately left to humans or downstream tools.
+
+- **Human-readable outputs**  
+  Markdown output is considered a first-class artifact, enabling review in pull requests and design discussions.
+
+These constraints are intentional and serve to keep the system understandable, auditable, and adaptable.
+
