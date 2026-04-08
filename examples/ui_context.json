@@ -1,0 +1,40 @@
+{
+  "page_metadata": {
+    "page_type": "claim_submission",
+    "title": "Submit Insurance Claim"
+  },
+  "forms": [
+    {
+      "id": "claim_form",
+      "purpose": "submit_claim",
+      "visible": true
+    }
+  ],
+  "inputs": [
+    {
+      "id": "claim_amount",
+      "type": "number",
+      "label": "Claim Amount",
+      "required": true,
+      "associated_form": "claim_form"
+    },
+    {
+      "id": "incident_description",
+      "type": "text",
+      "label": "Incident Description",
+      "required": true,
+      "associated_form": "claim_form"
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Submit Claim",
+      "type": "submit",
+      "associated_form": "claim_form"
+    }
+  ],
+  "notes": [
+    "Claim form is accessible to authenticated customers",
+    "Claim amount field accepts numeric values only"
+  ]
+}
