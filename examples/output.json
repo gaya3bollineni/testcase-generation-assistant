@@ -1,0 +1,35 @@
+[
+  {
+    "id": "TC-CLAIMS-001",
+    "intent": "Verify claim submission below the manual review threshold",
+    "preconditions": [
+      "Policy is active",
+      "Customer is authenticated"
+    ],
+    "steps": [
+      "Customer submits a claim with amount below threshold"
+    ],
+    "expected_outcome": [
+      "Claim is accepted",
+      "Claim is not routed for manual review"
+    ],
+    "source": "workflow + business_rules"
+  },
+  {
+    "id": "TC-CLAIMS-002",
+    "intent": "Verify duplicate claims are flagged",
+    "preconditions": [
+      "Policy is active",
+      "Customer is authenticated",
+      "A claim with identical details already exists"
+    ],
+    "steps": [
+      "Customer submits a duplicate claim"
+    ],
+    "expected_outcome": [
+      "Duplicate claim is flagged",
+      "Audit log entry is created"
+    ],
+    "source": "business_rules + constraints"
+  }
+]
