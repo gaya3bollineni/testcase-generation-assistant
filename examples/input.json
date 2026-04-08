@@ -1,0 +1,23 @@
+{
+  "actors    "Customer",  "actors": [
+    "Claims Processing System",
+    "Claims Adjuster"
+  ],
+  "preconditions": [
+    "Policy is active",
+    "Customer is authenticated",
+    "Claim has not been previously submitted"
+  ],
+  "workflow": [
+    "Customer submits claim with amount",
+    "System validates claim",
+    "System routes to adjuster if threshold exceeded"
+  ],
+  "business_rules": [
+    "Claims above threshold require manual review",
+    "Duplicate claims must be flagged"
+  ],
+  "constraints": [
+    "Regulatory audit logging required"
+  ]
+}
