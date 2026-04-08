@@ -33,6 +33,39 @@ Out of scope:
 
 Experimental. This repository is intentionally narrow in scope and intended as a reference and exploration rather than a production-ready tool.
 
+## Example
+
+A complete example showing structured input and generated test‑case candidates is available under the `examples/` directory. This is intended to illustrate how the system is used and what kind of output it produces, not to define test completeness or execution behavior.
+
+## Design Rationale
+
+This project is intentionally constrained. Rather than maximizing automation or AI capability, the design prioritizes clarity, reviewability, and human control.
+
+Key design choices include:
+
+- **Strict schemas before and after AI generation**  
+  Input and output validation ensure that AI contributes ideas without defining structure or semantics.
+
+- **Mocked AI integration**  
+  AI is treated as a replaceable assistant. Mocking allows the framework to be fully executable and reviewable without dependency on external services.
+
+- **No execution or prioritization logic**  
+  Test cases are generated as candidates only. Decisions such as ordering, selection, or execution are deliberately left to humans or downstream tools.
+
+- **Human-readable outputs**  
+  Markdown output is considered a first-class artifact, enabling review in pull requests and design discussions.
+
+These constraints are intentional and serve to keep the system understandable, auditable, and adaptable.
+
+
+## Non‑Goals
+
+This project intentionally does not:
+- Execute or automate tests
+- Rank, score, or prioritize test cases
+- Integrate with CI/CD systems
+- Replace human test design decisions
+
 ## Architecture Overview
 
 The system is intentionally simple and defensive in design. AI is used solely as an assistive component and is bounded by strict input and output validation.
@@ -68,29 +101,4 @@ The system is intentionally simple and defensive in design. AI is used solely as
 │  • Markdown (Readable)│
 └────────────────────────┘
 
-## Example
-
-A complete example showing structured input and generated test‑case candidates is available under the `examples/` directory. This is intended to illustrate how the system is used and what kind of output it produces, not to define test completeness or execution behavior.
-
-## Design Rationale
-
-## Design Rationale
-
-This project is intentionally constrained. Rather than maximizing automation or AI capability, the design prioritizes clarity, reviewability, and human control.
-
-Key design choices include:
-
-- **Strict schemas before and after AI generation**  
-  Input and output validation ensure that AI contributes ideas without defining structure or semantics.
-
-- **Mocked AI integration**  
-  AI is treated as a replaceable assistant. Mocking allows the framework to be fully executable and reviewable without dependency on external services.
-
-- **No execution or prioritization logic**  
-  Test cases are generated as candidates only. Decisions such as ordering, selection, or execution are deliberately left to humans or downstream tools.
-
-- **Human-readable outputs**  
-  Markdown output is considered a first-class artifact, enabling review in pull requests and design discussions.
-
-These constraints are intentional and serve to keep the system understandable, auditable, and adaptable.
 
