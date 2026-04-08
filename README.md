@@ -68,3 +68,6 @@ The system is intentionally simple and defensive in design. AI is used solely as
 │  • Markdown (Readable)│
 └────────────────────────┘
 
+## Example
+
+A complete example showing structured input and generated test‑case candidates is available under the `examples/` directory. This is intended to illustrate how the system is used and what kind of output it produces, not to define test completeness or execution behavior.
