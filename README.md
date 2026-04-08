@@ -4,6 +4,8 @@ This project explores the use of AI as an assistive tool for generating test-cas
 
 The focus is not on automation or execution, but on improving how test ideas are formed for complex enterprise systems.
 
+“The system may optionally extract static UI structure from a provided URL to inform scenario‑driven test case generation. The tool does not interact with, execute, or automate UI behavior.”
+
 ## Motivation
 
 In many organizations, test coverage gaps are not caused by tooling limitations, but by the difficulty of designing meaningful test cases for complex workflows. This project investigates how AI can help surface candidate test cases earlier, while keeping human judgment central to the process.
