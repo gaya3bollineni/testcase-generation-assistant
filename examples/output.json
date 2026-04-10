@@ -1,6 +1,7 @@
 [
   {
     "id": "TC-CLAIMS-001",
+    "acceptance_criterion_id": "AC-1",
     "intent": "Verify claim submission below the manual review threshold",
     "preconditions": [
       "Policy is active",
@@ -17,6 +18,7 @@
   },
   {
     "id": "TC-CLAIMS-002",
+    "acceptance_criterion_id": "AC-1",
     "intent": "Verify duplicate claims are flagged",
     "preconditions": [
       "Policy is active",
