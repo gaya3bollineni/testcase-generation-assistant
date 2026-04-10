@@ -1,3 +1,13 @@
+
+## Overview
+
+This project explores AI‑assisted generation of test‑case candidates from **Acceptance Criteria**.
+
+Acceptance Criteria are treated as the authoritative source of test intent.  
+The system expands each criterion into human‑reviewable test‑case candidates, while keeping human judgment central to validation and decision‑making.
+
+Optional contextual inputs (such as scenario descriptions, workflows, or UI context) may be used to enrich test coverage, but they never override Acceptance Criteria.
+
 # AI-Assisted Test Case Generation
 
 This project explores the use of AI as an assistive tool for generating test-case candidates from structured specifications and workflow descriptions.
@@ -10,18 +20,22 @@ The focus is not on automation or execution, but on improving how test ideas are
 
 In many organizations, test coverage gaps are not caused by tooling limitations, but by the difficulty of designing meaningful test cases for complex workflows. This project investigates how AI can help surface candidate test cases earlier, while keeping human judgment central to the process.
 
-## Scope
+### In Scope
 
-This project:
-- Generates candidate test cases from structured inputs
-- Produces reviewable, editable outputs
-- Treats AI as an assistant, not an authority
+- Acceptance‑criteria‑driven test‑case generation
+- Expansion into positive, negative, and boundary test cases
+- Human‑reviewable outputs (JSON, Markdown)
+- Optional enrichment using scenario, workflow, or UI context
 
-Out of scope:
-- Test execution
+
+## Out of Scope
+
+- Test execution or automation
 - CI/CD integration
-- Autonomous decision-making
-- End-to-end test automation platforms
+- Risk scoring or prioritization
+- Autonomous decision‑making
+- UI interaction or browser automation
+
 
 ## Design Principles
 
@@ -31,13 +45,22 @@ Out of scope:
 - Incremental adoption
 
   
+## High‑Level Flow
+
+Acceptance Criteria  
+→ Test‑Case Expansion  
+→ Optional Contextual Enrichment  
+→ Validated, Reviewable Test‑Case Candidates
+
+Each acceptance criterion is expanded independently. Generated test cases remain traceable to a single criterion and are intended for human review, not automated execution.
 ## Status
 
 Experimental. This repository is intentionally narrow in scope and intended as a reference and exploration rather than a production-ready tool.
 
-## Example
 
-A complete example showing structured input and generated test‑case candidates is available under the `examples/` directory. This is intended to illustrate how the system is used and what kind of output it produces, not to define test completeness or execution behavior.
+## Examples
+
+Examples demonstrate how acceptance criteria act as the primary input for test‑case generation. Supporting files such as scenarios or UI context are included only to enrich test coverage and are optional.
 
 ## Design Rationale
 
