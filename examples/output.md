@@ -1,4 +1,5 @@
 ### TC-CLAIMS-001
+**Acceptance Criterion:** AC-1 – Customer can submit a claim with a valid claim amount
 **Intent:** Verify claim submission below the manual review threshold  
 
 **Preconditions**
@@ -14,7 +15,8 @@
 
 ---
 
-### TC-CLAIMS-002  
+### TC-CLAIMS-002
+**Acceptance Criterion:** AC-1 – Customer can submit a claim with a valid claim amount
 **Intent:** Verify duplicate claims are flagged  
 
 **Preconditions**
