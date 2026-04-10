@@ -30,6 +30,7 @@ def generate_test_cases(workflow: Dict[str, Any]) -> List[Dict[str, Any]]:
     This function intentionally produces test-case *candidates* that must
     be reviewed and approved by a human.
     """
+    validate_acceptance_criteria(acceptance_criteria)
     _validate_workflow(workflow)
     return _generate_candidates(workflow)
 
@@ -184,3 +185,32 @@ def save_test_cases_markdown(
             f.write("\n\n---\n\n")
 
     print(f"Saved test cases to {path}")
+
+def validate_acceptance_criteria(acceptance_criteria):
+    if not acceptance_criteria:
+        raise ValueError("Acceptance criteria are required to generate test cases.")
+
+    if not isinstance(acceptance_criteria, list):
+        raise ValueError("Acceptance criteria must be a list.")
+
+    seen_ids = set()
+
+    for ac in acceptance_criteria:
+        if not isinstance(ac, dict):
+            raise ValueError("Each acceptance criterion must be an object.")
+
+        ac_id = ac.get("id")
+        statement = ac.get("statement")
+
+        if not ac_id or not isinstance(ac_id, str):
+            raise ValueError("Each acceptance criterion must have a non-empty 'id' field.")
+
+        if ac_id in seen_ids:
+            raise ValueError(f"Duplicate acceptance criterion id found: {ac_id}")
+
+        seen_ids.add(ac_id)
+
+        if not statement or not isinstance(statement, str):
+            raise ValueError(
+                f"Acceptance criterion '{ac_id}' must have a non-empty 'statement' field."
+            )
