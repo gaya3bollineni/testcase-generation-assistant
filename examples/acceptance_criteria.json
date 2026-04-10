@@ -1,0 +1,21 @@
+{
+  "feature": "Claim Submission",
+  "acceptance_criteria": [
+    {
+      "id": "AC-1",
+      "statement": "Customer can submit a claim with a valid claim amount"
+    },
+    {
+      "id": "AC-2",
+      "statement": "Claims above the threshold require manual review"
+    },
+    {
+      "id": "AC-3",
+      "statement": "Duplicate claims are flagged and not processed"
+    },
+    {
+      "id": "AC-4",
+      "statement": "All submitted claims are recorded for audit purposes"
+    }
+  ]
+}
